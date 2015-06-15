@@ -11,7 +11,7 @@ Vagrant.configure(2) do |config|
   config.vm.box = "ubuntu/trusty64"    
 
   # Sync'd folders
-  config.vm.synced_folder ".",                         "/vagrant",  disabled: true
+  config.vm.synced_folder ".",         "/vagrant",  disabled: true
   
   # app working directory is '..' (itself) and it's shared between Host and Guest OS.
   config.vm.synced_folder "..",        "/home/vagrant/workspace/ruby/#{ APP_NAME }", create: true
@@ -19,7 +19,6 @@ Vagrant.configure(2) do |config|
   # This will save deb files under your ~/apt-archives, 
   # so that you won't them downloading again when re-building environment
   # This will save you time and money (if you pay for traffic)
-  # config.vm.synced_folder "~/vagrant/#{ config.vm.box }/apt-archives", "/var/cache/apt/archives/", create: true
   config.vm.synced_folder "./apt-archives", "/var/cache/apt/archives/", create: true
 
    # Ubuntu VM
