@@ -1,4 +1,4 @@
-# A Virtual Machine for Ruby on Rails Application Development
+# A Virtual Machine for Ruby on Rails Web Application Development
 
 ## Introduction
 
@@ -28,7 +28,6 @@ Inspired by fxn's [rails-dev-box](https://github.com/rails/rails-dev-box)
 ## Steps
 
 ```
-    0.- install vagrant & virtualbox
     1.- create the directory that will hold your app directory structure.
         
         mkdir app_name
@@ -37,13 +36,13 @@ Inspired by fxn's [rails-dev-box](https://github.com/rails/rails-dev-box)
     
         cd app_name
         
-    3.- clone vgtbox repo and clean after by executing 'install-vgtbox' script that will be inside .vgt/bin.
+    3.- clone vgtbox repo and clean after by executing 'vgtbox-clean' script that will be inside .vgt/bin.
     
         windows:
-        git clone https://github.com/ebratini/rails-devbox.git . & .vgt\bin\install-vgtbox.bat
+        git clone https://ebratini@bitbucket.org/ebratini/rails-devbox.git . & .vgt\bin\vgtbox-clean.bat
 
         linux:
-        git clone https://github.com/ebratini/rails-devbox.git . && .vgt/bin/install-vgtbox.sh
+        git clone https://ebratini@bitbucket.org/ebratini/rails-devbox.git . && .vgt/bin/vgtbox-clean.sh
 
     4.- cd to vgtbox project home '.vgt'
     
