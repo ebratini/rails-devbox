@@ -44,8 +44,6 @@ Inspired by fxn's [rails-dev-box](https://github.com/rails/rails-dev-box)
 
         linux:
         git clone https://github.com/ebratini/rails-devbox.git . && .vgt/bin/install-vgtbox.sh
-        
-        ** note: after the script finishes, it will remove this bin directory; you wont need it anymore. **
 
     4.- cd to vgtbox project home '.vgt'
     
@@ -66,7 +64,7 @@ Inspired by fxn's [rails-dev-box](https://github.com/rails/rails-dev-box)
     
     8.- create your rails app:
     
-        guest$ rails new APP_NAME . (don't forget the '.' as target for the rails new command)
+        guest$ rails new APP_NAME . (mind the '.' as target for the rails new command)
 
     9.- you're ready to go!.
 ```
@@ -86,8 +84,6 @@ Port 3000 in the host computer is forwarded to port 3000 in the virtual machine 
 
 
 ## Recommended Workflow
-
-The recommended workflow is
 
 * edit files in the host computer
 * run within the virtual machine
