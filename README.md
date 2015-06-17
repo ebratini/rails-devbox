@@ -48,22 +48,22 @@ Inspired by fxn's [rails-dev-box](https://github.com/rails/rails-dev-box)
     
         host$ cd .vgt
     
-    5.- in 'Vagrantfile' set/update 'APP_NAME' variable with your rails app name, for the following steps, replace APP_NAME with it.
+    5.- in 'Vagrantfile' set/update '$APP_NAME' variable with your rails app name, for the following steps, replace $APP_NAME with it.
     6.- do vagrant up:
     
         host$ vagrant up
         
     6.- do vagrant ssh:
     
-        host$ vagrant ssh APP_NAME.dev
+        host$ vagrant ssh $APP_NAME.dev
         
-    7.- cd to '/home/vagrant/workspace/ruby/APP_NAME' (check 'Vagrantfile' to see vagrant synced folders)
+    7.- cd to '/home/vagrant/workspace/ruby/$APP_NAME' # check 'Vagrantfile' to see vagrant synced folders
         
-        guest$ cd /home/vagrant/workspace/ruby/APP_NAME
+        guest$ cd /home/vagrant/workspace/ruby/$APP_NAME
     
     8.- create your rails app:
     
-        guest$ rails new . (Notice the period at the end telling it to use current directory instead of creating a subdirectory)
+        guest$ rails new .  # Notice the period at the end telling it to use current directory instead of creating a subdirectory
 
     9.- you're ready to go!.
 ```
