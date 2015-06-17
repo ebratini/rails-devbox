@@ -8,26 +8,27 @@
 ## Bundler, Rails and Rake gems for the installed ruby
 
 # configuration variables with default values
-RUBY_VERSION = 2.2.2
-RAILS_VERSION = 4.2.1
+RUBY_VERSION=2.2.2
+RAILS_VERSION=4.2.1
 
 # The output of all these installation steps is noisy. With this utility
 # the progress report is nice and concise.
 function install {
-  echo installing $1
+  echo "..installing $1"
   shift
-  apt-get -y install "$@" >/dev/null 2>&1
+  sudo apt-get -y install "$@" >/dev/null 2>&1
 }
 
 # Exit on error
 set -e
 
 # updating package info
-sudo apt-get update
+echo '..updating package info'
+sudo apt-get update >/dev/null 2>&1
 
 # installing dev tools
 install 'development tools' build-essential curl zlib1g-dev libssl-dev libreadline-dev libyaml-dev
-install 'development tools' dudolibxml2-dev libxslt1-dev libcurl4-openssl-dev libffi-dev libgdbm-dev
+install 'development tools' libxml2-dev libxslt1-dev libcurl4-openssl-dev libffi-dev libgdbm-dev
 install 'development tools' python-software-properties libncurses5-dev automake libtool bison
 
 # installing git
@@ -35,7 +36,7 @@ install Git git
 
 # installing heroku toolbelt
 echo '..installing heroku toolbelt'
-wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
+sudo wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh >/dev/null 2>&1
 
 # installing node.js (execjs runtime)
 install 'Node.js (ExecJS runtime)' nodejs
@@ -45,16 +46,19 @@ install 'Node.js (ExecJS runtime)' nodejs
 install SQLite sqlite3 libsqlite3-dev
 
 ## installing MySQL
+sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password password root'
+sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password root'
 install MySQL mysql-server libmysqlclient-dev
 
 ## installing postgresql
 install PostgreSQL postgresql postgresql-contrib libpq-dev
 
 ### create postgresql user with the name: vgt
-sudo -u postgres createuser --superuser vgt
+sudo -u postgres createuser --superuser $USER
 
-### Password is also - vgt
+### Password is also - $USER
 sudo -u postgres psql
+
 
 # installing rvm and ruby RUBY_VERSION
 echo "..installing rvm and ruby $RUBY_VERSION"

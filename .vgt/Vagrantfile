@@ -22,10 +22,10 @@ Vagrant.configure(2) do |config|
   config.vm.synced_folder "./apt-archives", "/var/cache/apt/archives/", create: true
 
    # Ubuntu VM
-  config.vm.define "ubuntu" do |ubuntu|
-    ubuntu.vm.hostname = "#{ APP_NAME }.dev"
-    ubuntu.vm.network "private_network", ip: "10.20.30.100"
-    ubuntu.vm.network :forwarded_port, guest: 3000, host: 3000
-    ubuntu.vm.provision "shell", path: "provision/bootstrap.sh", privileged: false    
+  config.vm.define "#{ APP_NAME }.dev" do |ub|
+    ub.vm.hostname = "#{ APP_NAME }.dev"
+    ub.vm.network "private_network", ip: "10.20.30.100"
+    ub.vm.network :forwarded_port, guest: 3000, host: 3000
+    ub.vm.provision "shell", path: "./provision/bootstrap.sh", privileged: false    
   end # End config.vm.define ubuntu
 end

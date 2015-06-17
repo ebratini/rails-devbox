@@ -63,7 +63,7 @@ Inspired by fxn's [rails-dev-box](https://github.com/rails/rails-dev-box)
     
     8.- create your rails app:
     
-        guest$ rails new APP_NAME . (mind the '.' as target for the rails new command)
+        guest$ rails new . (Notice the period at the end telling it to use current directory instead of creating a subdirectory)
 
     9.- you're ready to go!.
 ```
