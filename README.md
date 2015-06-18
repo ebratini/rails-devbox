@@ -39,10 +39,10 @@ Inspired by fxn's [rails-dev-box](https://github.com/rails/rails-dev-box)
     3.- clone vgtbox repo and clean after by executing 'vgtbox-clean' script that will be inside .vgt/bin.
     
         windows:
-        git clone https://ebratini@bitbucket.org/ebratini/rails-devbox.git . & .vgt\bin\vgtbox-clean.bat
+        git clone https://github.com/ebratini/rails-devbox.git . & .vgt\bin\vgtbox-clean.bat
 
         linux:
-        git clone https://ebratini@bitbucket.org/ebratini/rails-devbox.git . && .vgt/bin/vgtbox-clean.sh
+        git clone https://github.com/ebratini/rails-devbox.git . && .vgt/bin/vgtbox-clean.sh
 
     4.- cd to vgtbox project home '.vgt'
     
