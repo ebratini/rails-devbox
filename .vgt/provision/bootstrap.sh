@@ -9,7 +9,7 @@
 
 # configuration variables with default values
 RUBY_VERSION=2.2.2
-RAILS_VERSION=4.2.1
+RAILS_VERSION=4.2.4
 
 # The output of all these installation steps is noisy. With this utility
 # the progress report is nice and concise.
@@ -27,9 +27,10 @@ echo '..updating package info'
 sudo apt-get update >/dev/null 2>&1
 
 # installing dev tools
-install 'development tools' build-essential curl zlib1g-dev libssl-dev libreadline-dev libyaml-dev
-install 'development tools' libxml2-dev libxslt1-dev libcurl4-openssl-dev libffi-dev libgdbm-dev
-install 'development tools' python-software-properties libncurses5-dev automake libtool bison
+#                           libgmp-dev to troubleshoot issue with rvm/nokogiri gem install when installing rails
+install 'development tools' build-essential patch curl ruby-dev zlib1g-dev liblzma-dev libgmp-dev libssl-dev
+install 'development tools' libreadline-dev libyaml-dev libxml2-dev libxslt1-dev libcurl4-openssl-dev libtool
+install 'development tools' libffi-dev libgdbm-dev python-software-properties libncurses5-dev automake bison
 
 # installing git
 install Git git
@@ -43,15 +44,15 @@ install 'Node.js (ExecJS runtime)' nodejs
 
 # installing SQLite3, MySQL, and Postgres
 ## installing sqlite3
-install SQLite sqlite3 libsqlite3-dev
+install 'SQLite' sqlite3 libsqlite3-dev
 
 ## installing MySQL
 sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password password root'
 sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password root'
-install MySQL mysql-server libmysqlclient-dev
+install 'MySQL' mysql-server libmysqlclient-dev
 
 ## installing postgresql
-install PostgreSQL postgresql postgresql-contrib libpq-dev
+install 'PostgreSQL' postgresql postgresql-contrib libpq-dev
 
 ### create postgresql user with the name: vgt
 sudo -u postgres createuser --superuser $USER
@@ -59,6 +60,8 @@ sudo -u postgres createuser --superuser $USER
 ### Password is also - $USER
 sudo -u postgres psql
 
+# troubleshooting rvm/nokogiri gem install issue when installing rails
+# export NOKOGIRI_USE_SYSTEM_LIBRARIES=1
 
 # installing rvm and ruby RUBY_VERSION
 echo "..installing rvm and ruby $RUBY_VERSION"
@@ -67,13 +70,13 @@ curl -L https://get.rvm.io | bash -s stable
 source ~/.rvm/scripts/rvm
 
 rvm requirements
-rvm install $RUBY_VERSION
+rvm install $RUBY_VERSION # --disable-binary # disabling binaries troubleshooting rvm/nokogiri gem install issue
 rvm use $RUBY_VERSION --default
 ruby -v
 
 # installing gems: bundler, rails and rake
 echo '..installing gem bundler'
-echo "gem: --no-ri --no-rdoc" > ~/.gemrc
+echo 'gem: --no-ri --no-rdoc' > ~/.gemrc
 gem install bundler
 bundler -v
 
@@ -84,6 +87,5 @@ rails -v
 echo '..installing rake'
 gem install rake
 rake --version
-
 
 echo "done! you're ready to go."

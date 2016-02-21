@@ -57,9 +57,9 @@ Inspired by fxn's [rails-dev-box](https://github.com/rails/rails-dev-box)
     
         host$ vagrant ssh $APP_NAME.dev
         
-    7.- cd to '/home/vagrant/workspace/ruby/$APP_NAME' # check 'Vagrantfile' to see vagrant synced folders
+    7.- cd to '/home/workspace/$APP_NAME' # check 'Vagrantfile' to see vagrant synced folders
         
-        guest$ cd /home/vagrant/workspace/ruby/$APP_NAME
+        guest$ cd /home/workspace/$APP_NAME
     
     8.- create your rails app:
     
