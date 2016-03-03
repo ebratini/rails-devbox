@@ -32,8 +32,22 @@ install 'development tools' build-essential patch curl ruby-dev zlib1g-dev liblz
 install 'development tools' libreadline-dev libyaml-dev libxml2-dev libxslt1-dev libcurl4-openssl-dev libtool
 install 'development tools' libffi-dev libgdbm-dev python-software-properties libncurses5-dev automake bison
 
-# installing git
+
+# installing git ....
 install Git git
+
+# configure git
+git config --global color.ui auto
+
+# git-prompt
+# https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh
+curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh -o ~/.git-prompt.sh
+echo "source ~/.git-prompt.sh" >> ~/.bashrc
+echo "export PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w\[\033[01;33m\]\$(__git_ps1)\[\033[01;34m\] \\$\[\033[00m\] '" >> ~/.profile
+# basic: echo "export PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '" >> ~/.profile
+# PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w\[\033[01;33m\]$(__git_ps1)\[\033[01;34m\] \$\[\033[00m\] '
+# ...................
+
 
 # installing heroku toolbelt
 echo '..installing heroku toolbelt'
